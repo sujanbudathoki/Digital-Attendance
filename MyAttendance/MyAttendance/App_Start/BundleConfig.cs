@@ -25,6 +25,11 @@ namespace MyAttendance
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            //Creating Custom Bundles
+            bundles.Add(new StyleBundle("~/Content/aCss").IncludeDirectory("~/Content/assets/css","*.css"));
+            bundles.Add(new ScriptBundle("~/Content/pluginScripts").IncludeDirectory("~/Content/assets/js", "*.js"));
+
+            
         }
     }
 }

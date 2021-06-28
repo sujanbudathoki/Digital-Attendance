@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyAttendance.Models
 {
-    public class UserModel
+    public class UserViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
