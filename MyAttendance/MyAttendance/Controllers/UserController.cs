@@ -25,5 +25,14 @@ namespace MyAttendance.Controllers
             return RedirectToAction("Login");
         }
 
+        public ActionResult RegisterAsTeacher()
+        {
+            return View();
+        }
+        public ActionResult RegisterAsStudent()
+        {
+            return View();
+        }
+
     }
 }
