@@ -1,17 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using MyAttendance.Models;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MyAttendance.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
+
         public ActionResult Login()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Login(UserViewModel model)
+        {
+            FormsAuthentication.SetAuthCookie(model.Email, false);
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
+        }
+
     }
 }

@@ -1,0 +1,23 @@
+﻿body {
+}
+.leftSpace{
+    padding-left:500px;
+    padding-right:400px;
+}
+.alignIcon {
+    padding-left: 120px;
+    color: #ff0000;
+    padding-bottom: 20px;
+    font-size: 60px;
+}
+.middle {
+    padding-left: 120px;
+    font: bold 12px;
+    color: #4cff00;
+    text-decoration: underline;
+    text-decoration-color: #ff0000;
+}
+.form-control{
+    font-size:12px;
+   
+}
