@@ -9,6 +9,11 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/aCss")
+    <link href="~/Content/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/Content/solid.min.css" rel="stylesheet" />
+    <link href="~/Content/svg-with-js.min.css" rel="stylesheet" />
+    <link href="~/Content/regular.min.css" rel="stylesheet" />
+    <link href="~/Content/v4-shims.min.css" rel="stylesheet" />
     @Scripts.Render("~/Content/pluginScripts")
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -26,7 +31,7 @@
             <div class="logo">
                 <a href="https://www.creative-tim.com" class="simple-text logo-mini">
                     <div class="logo-image-small">
-                        <img src="../assets/img/logo-small.png">
+                      
                     </div>
                     <!-- <p>CT</p> -->
                 </a>
@@ -39,20 +44,30 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="active ">
-                        <a href="./dashboard.html">
+                    <li class="active sLayout" id="home">
+                        <a href="/Home/Index">
                             <i class="nc-icon nc-bank"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
 
-                </ul>
+                  
+                
+                    <li class="sLayout" id="standard">
+                        <a href="/Standard/Index">
+                            <i class="nc-book-bookmark"></i>
+                            <p>Classes</p>
+                            </a></li></ul>
             </div>
         </div>
         <div class="main-panel">
-            <!-- Navbar -->
+           <a href="/User/LogOut" style="margin-left:1000px;background-color:blueviolet;text-decoration:none;padding:4px;border-radius:25px;">Log-out</a>
+         
+            
+                @RenderBody();
+          
 
-            @RenderBody();
+
         </div>
     </div>
     <script src="~/Content/assets/js/core/jquery.min.js" type="text/javascript"></script>
@@ -72,6 +87,9 @@
     @Scripts.Render("~/bundles/bootstrap")
 
     @RenderSection("scripts", required: false)
+    <script>
+
+    </script>
 </body>
 
 </html>

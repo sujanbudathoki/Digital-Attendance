@@ -25,12 +25,7 @@ namespace MyAttendance.Controllers
         [HttpPost]
         public ActionResult Login(UserViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            else
-            {
+           
 
                 bool checkUser = _userContext.Collection().Any(x => x.Email == model.Email && x.Password == model.Password);
                 if (checkUser)
@@ -44,7 +39,7 @@ namespace MyAttendance.Controllers
                     return View();
 
                 }
-            }
+            
            
         }
 
@@ -71,6 +66,7 @@ namespace MyAttendance.Controllers
                 {
                     model.UserTypeId = 1; //manually setting role to teacher
                     _userContext.Insert(model);
+                    _userContext.Commit();
                     return RedirectToAction("Login");
                 }
                 else

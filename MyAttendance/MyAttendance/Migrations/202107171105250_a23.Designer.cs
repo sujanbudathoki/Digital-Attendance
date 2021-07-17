@@ -7,13 +7,13 @@ namespace MyAttendance.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class User_and_userType : IMigrationMetadata
+    public sealed partial class a23 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(User_and_userType));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(a23));
         
         string IMigrationMetadata.Id
         {
-            get { return "202107110606282_User_and_userType"; }
+            get { return "202107171105250_a23"; }
         }
         
         string IMigrationMetadata.Source

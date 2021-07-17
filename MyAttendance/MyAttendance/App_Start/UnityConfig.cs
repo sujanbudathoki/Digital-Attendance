@@ -1,4 +1,5 @@
 using MyAttendance.DataAccess;
+using MyAttendance.Models.Components;
 using MyAttendance.Models.User;
 using MyAttendance.Repositories;
 using System;
@@ -46,6 +47,7 @@ namespace MyAttendance
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<UserModel>, SQLRepository<UserModel>>();
+            container.RegisterType<IRepository<Standard>, SQLRepository<Standard>>();
         }
     }
 }
