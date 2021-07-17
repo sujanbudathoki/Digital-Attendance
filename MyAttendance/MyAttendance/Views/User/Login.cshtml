@@ -12,8 +12,8 @@
 
 
 <div class="card leftSpace" style="font-size:15px;">
-    <i class="tim-icons icon-single-02 alignIcon"></i>
-    <h2 class="">Attendance Management System</h2>
+   
+  
 
     <div class="card-body">
 
@@ -21,37 +21,44 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                <h4 class="middle">Login</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+
+            <h4 style="font-family:Ebrima;color:#0094ff;margin-left:40px;">Attendance-Login</h4>
+            <i class="nc-icon nc-single-02" style="color:#0094ff;margin-left:120px;"></i>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-                <div class="form-group">
+            <div class="form-group">
 
-                    <div class="col-md-10">
-                        <label style="font-size:12px;">Email address</label>
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control",@id="email" } })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger emailDan"})
-                    </div>
-                </div>
-
-                <div class="form-group">
-
-                    <div class="col-md-10">
-                        <label for="exampleInputPassword1" style="font-size:12px;">Password</label>
-                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control",@id="password" } })
-                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <input type="submit" value="Log-In" class="btn btn-default" id="submitbtn" />
-                        <button type="button" class="btn btn-warning">Sign Up</button>
-                    </div>
+                <div class="col-md-10">
+                    <label style="font-size:12px;">Email address</label>
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "email" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger emailDan" })
                 </div>
             </div>
+
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    <label for="exampleInputPassword1" style="font-size:12px;">Password</label>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @id = "password" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Log-In" class="btn btn-default" id="submitbtn" />
+                    @Html.ActionLink("SignUp", "SignUp", "User", null, new { @class = "btn btn-warning" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <code style="font:italic;font-family:Ebrima;color:#ff0000">@ViewBag.Error</code>
+                </div>
+            </div>
+        </div>
         }
     </div>
 </div>

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyAttendance.Repositories
 {
+    
+ 
   public  interface IRepository<T> where T:class
     {
-        IQueryable<T> Collection();
+        IEnumerable<T> Collection();
         void Commit();
         T Find(int Id);
         void Insert(T t);

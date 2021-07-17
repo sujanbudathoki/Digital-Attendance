@@ -16,17 +16,14 @@ namespace MyAttendance.DataAccess
        public SQLRepository(DataContext context)
         {
             this.Context = context;
-            this.dbset = Context.Set<T>();//dbset from datacontext
+            this.dbset = context.Set<T>();//dbset from datacontext
         }
 
-        public   IQueryable<T> Collection()
+        public   IEnumerable<T> Collection()
         {
             return  dbset;
         }
-        public async Task<List<T>> GetListAsync()
-        {
-            return await Collection().ToListAsync();
-        }
+       
 
 
         public  void Commit()

@@ -10,6 +10,6 @@ namespace MyAttendance.Models.Components
     {
         public int Id { get; set; }
         public string StandardName { get; set; }
-        public virtual ICollection<Student> students { get; set; }
+        
     }
 }
