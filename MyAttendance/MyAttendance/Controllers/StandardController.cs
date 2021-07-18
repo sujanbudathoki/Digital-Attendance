@@ -50,8 +50,38 @@ namespace MyAttendance.Controllers
         }
         public ActionResult Edit(int Id)
         {
-            return View();
+            var standard = _stdContext.Find(Id);
+            return View(standard);
         }
+
+        [HttpPost]
+        public ActionResult Edit(Standard standard)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            else
+            {
+                _stdContext.Edit(standard);
+                _stdContext.Commit();
+                return RedirectToAction("Index");
+            }
+        }
+        public ActionResult Delete(int Id)
+        {
+            var standard = _stdContext.Find(Id);
+            return View(standard);
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult ConfirmDelete(int Id)
+        {
+            _stdContext.Delete(Id);
+            _stdContext.Commit();
+            return RedirectToAction("Index");
+        }
+
 
         
 

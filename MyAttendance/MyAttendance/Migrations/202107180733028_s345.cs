@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class a23 : DbMigration
+    public partial class s345 : DbMigration
     {
         public override void Up()
         {
@@ -12,9 +12,22 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        StandardName = c.String(),
+                        StandardName = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Students",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Roll = c.Int(nullable: false),
+                        StudentName = c.String(),
+                        ClassId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Standards", t => t.ClassId, cascadeDelete: true)
+                .Index(t => t.ClassId);
             
             CreateTable(
                 "dbo.UserModels",
@@ -46,9 +59,12 @@
         public override void Down()
         {
             DropForeignKey("dbo.UserModels", "UserTypeId", "dbo.UserTypes");
+            DropForeignKey("dbo.Students", "ClassId", "dbo.Standards");
             DropIndex("dbo.UserModels", new[] { "UserTypeId" });
+            DropIndex("dbo.Students", new[] { "ClassId" });
             DropTable("dbo.UserTypes");
             DropTable("dbo.UserModels");
+            DropTable("dbo.Students");
             DropTable("dbo.Standards");
         }
     }
