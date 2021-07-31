@@ -2,8 +2,8 @@ using MyAttendance.DataAccess;
 using MyAttendance.Models.Components;
 using MyAttendance.Models.User;
 using MyAttendance.Repositories;
+using MyAttendance.Services;
 using System;
-
 using Unity;
 
 namespace MyAttendance
@@ -48,6 +48,8 @@ namespace MyAttendance
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<UserModel>, SQLRepository<UserModel>>();
             container.RegisterType<IRepository<Standard>, SQLRepository<Standard>>();
+            container.RegisterType<IStudentService, StudentService>();
+            container.RegisterType<IRepository<Student>, SQLRepository<Student>>();
         }
     }
 }

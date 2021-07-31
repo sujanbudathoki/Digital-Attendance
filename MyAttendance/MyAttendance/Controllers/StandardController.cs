@@ -63,9 +63,9 @@ namespace MyAttendance.Controllers
             }
             else
             {
-                _stdContext.Edit(standard);
-                _stdContext.Commit();
-                return RedirectToAction("Index");
+                 _stdContext.Edit(standard);
+                 _stdContext.Commit();
+                 return RedirectToAction("Index");
             }
         }
         public ActionResult Delete(int Id)

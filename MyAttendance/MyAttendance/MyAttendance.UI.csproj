@@ -160,14 +160,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Components.cs" />
-    <Compile Include="Migrations\202107180733028_s345.cs" />
-    <Compile Include="Migrations\202107180733028_s345.designer.cs">
-      <DependentUpon>202107180733028_s345.cs</DependentUpon>
+    <Compile Include="Migrations\202107310642218_a234.cs" />
+    <Compile Include="Migrations\202107310642218_a234.designer.cs">
+      <DependentUpon>202107310642218_a234.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Components\RoleMapping.cs" />
     <Compile Include="Models\Components\Standard.cs" />
     <Compile Include="Models\Components\Student.cs" />
+    <Compile Include="Models\Components\StudentMain.cs" />
+    <Compile Include="Models\Components\StudentView.cs" />
     <Compile Include="Models\Components\UserType.cs" />
     <Compile Include="Models\Institute\Institute.cs" />
     <Compile Include="Models\User\UserModel.cs" />
@@ -176,7 +178,6 @@
     <Compile Include="Repositories\IStudentService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="ViewModels\ClassStudentViewModel.cs" />
-    <Compile Include="ViewModels\StudentViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -342,10 +343,12 @@
     <Content Include="Views\Standard\Create.cshtml" />
     <Content Include="Views\Standard\Edit.cshtml" />
     <Content Include="Views\Standard\Delete.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\StudentIndex.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -361,8 +364,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107180733028_s345.resx">
-      <DependentUpon>202107180733028_s345.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107310642218_a234.resx">
+      <DependentUpon>202107310642218_a234.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

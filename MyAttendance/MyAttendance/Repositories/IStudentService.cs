@@ -11,10 +11,13 @@ namespace MyAttendance.Repositories
    public interface IStudentService
     {
 
-        IEnumerable<ClassStudentViewModel> GetClassStudentViewModels();
+        List<ClassStudentViewModel> GetClassStudentViewModels();
         void InsertStudent(Student student);
         void DeleteStudent(int studentId);
         void UpdateStudent(Student student);
+        string getClassName(int classId);
+        IEnumerable<Standard> GetStandards();
+        
 
     }
 }

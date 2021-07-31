@@ -9,6 +9,6 @@ namespace MyAttendance.ViewModels
     public class ClassStudentViewModel
     {
         public int classId { get; set; }
-        public IEnumerable<Student> students { get; set; }
+        public IList<Student> students { get; set; }
     }
 }

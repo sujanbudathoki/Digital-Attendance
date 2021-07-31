@@ -22,25 +22,30 @@ namespace MyAttendance.Services
             _studentContext.Delete(studentId);
             _studentContext.Commit();
         }
-        public IEnumerable<ClassStudentViewModel> GetClassStudentViewModels()
+        public List<ClassStudentViewModel> GetClassStudentViewModels()
         {
-            var returnModel = GetStandards().Select(x => new ClassStudentViewModel 
+            var returnModel = GetStandards()
+            .Select(x => new ClassStudentViewModel 
             { 
                 classId=x.Id,
                 students=getStudents(x.Id)
-            });
+            }).ToList();
+        
             return returnModel;
         }
-        private IEnumerable<Standard> GetStandards()
+        public IEnumerable<Standard> GetStandards()
         {
             var standards = _stdContext.Collection();
             return standards;
         }
         
 
-        private IEnumerable<Student> getStudents(int classId)
+        private IList<Student> getStudents(int classId)
         {
-            var studentlist = _studentContext.Collection().Where(x => x.ClassId == classId);
+            var studentlist = _studentContext.Collection()
+                                             .Where(x => x.ClassId == classId)
+                                             .ToList();
+            
             return studentlist;
         }
 
@@ -57,6 +62,15 @@ namespace MyAttendance.Services
             _studentContext.Commit();
         }
 
+        public string getClassName(int classId)
+        {
+            string name = _stdContext.Collection()
+                                     .Where(x => x.Id == classId)
+                                     .FirstOrDefault()
+                                     .StandardName;
+            return name;
+        }
+        
         
     }
 }
