@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - DigitalAttendance</title>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     @Styles.Render("~/Content/css")
@@ -17,6 +17,7 @@
     @Scripts.Render("~/Content/pluginScripts")
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link href="~/Content/assets/css/paper-dashboard.min.css" rel="stylesheet" />
     <link href="~/Content/assets/demo/demo.css" rel="stylesheet" />
 
@@ -29,13 +30,13 @@
     <div class="wrapper ">
         <div class="sidebar" data-color="white" data-active-color="danger">
             <div class="logo">
-                <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+                <a href="#" class="simple-text logo-mini">
                     <div class="logo-image-small">
                       
                     </div>
                     <!-- <p>CT</p> -->
                 </a>
-                <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+                <a href="#" class="simple-text logo-normal">
                   Digital Attendance
                     <!-- <div class="logo-image-big">
                       <img src="../assets/img/logo-big.png">
@@ -51,20 +52,36 @@
                         </a>
                     </li>
 
-                  
-                
+
+
                     <li class="sLayout" id="standard">
                         <a href="/Standard/Index">
                             <i class="nc-book-bookmark"></i>
                             <p>Classes</p>
-                            </a></li></ul>
+                        </a>
+                    </li>
+
+                    <li class="sLayout" id="student">
+                        <a href="/Student/Index">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <p>Student-Management</p>
+                        </a>
+                    </li>
+                    <li class="sLayout" id="attendance">
+                        <a href="/Attendance/Index">
+                            <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                            <p>Attendance</p>
+                        </a>
+                    </li>
+                 
+                </ul>
             </div>
         </div>
         <div class="main-panel">
-           <a href="/User/LogOut" style="margin-left:1000px;background-color:blueviolet;text-decoration:none;padding:4px;border-radius:25px;">Log-out</a>
+           <a href="/User/LogOut" style="margin-left:1000px" class="btn btn-danger">Log-out</a>
          
             
-                @RenderBody();
+                @RenderBody()
           
 
 

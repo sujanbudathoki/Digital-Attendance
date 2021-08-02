@@ -1,25 +1,38 @@
 ﻿@model IEnumerable<int>
 
+@{ ViewBag.Title = "StudentIndex";
+    int rowcounter = 0;
+}
+
+<h2 style=" font-family:Cambria;color:#ff6a00">Students by Class</h2>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if ((rowcounter / 6) % 2 == 0)
+        {
+            <div class="col-md-2">
+                @Html.ActionLink("Class-" + item.ToString(), "StudentIndex", "Student", new { Id = item }, new { @class = "btn btn-primary" })
+            </div>
+        }
+        else
+        { <div class="col-md-2">
+                @Html.ActionLink("Class-" + item.ToString(), "StudentIndex", "Student", new { Id = item }, new { @class = "btn btn-warning" })
+          </div>
+         }
+           
+        rowcounter++;
+     }
+            </div>
+            <div class="container" id="studentList">
 
 
-<h2>Index</h2>
-@foreach(var item in Model)
-            {
-                <div class="row">
-                    <div class="col-md-2">
-                        @Html.ActionLink(item.ToString(), "StudentIndex", "Student",new { Id=item},  new { Id=item})
-                    </div>
-                </div>
-            }
-<div class="container" id="studentList">
-   
- 
-    
 
 
-</div>
-<script>
-    $(document).ready(function () {
-        alert("Hello");
-    })
-</script>
+
+            </div>
+            <script>
+                $(document).ready(function () {
+                    $('.sLayout').removeClass('active');
+                    $('#student').addClass('active');
+                })
+            </script>

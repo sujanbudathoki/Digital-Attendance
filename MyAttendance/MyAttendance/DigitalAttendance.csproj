@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StandardController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -346,6 +347,7 @@
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\StudentIndex.cshtml" />
     <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Attendance\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -75,6 +75,7 @@ namespace MyAttendance.Controllers
                     ClassId = model.ClassId,
                     Roll = model.Roll
                 };
+                _stdService.InsertStudent(studentModel);
                 return RedirectToAction("StudentIndex","Student",new { @id=model.ClassId});
             }
         }
