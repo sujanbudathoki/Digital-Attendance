@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link href="~/Content/assets/css/paper-dashboard.min.css" rel="stylesheet" />
     <link href="~/Content/assets/demo/demo.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.min.js"></script>
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -73,6 +75,12 @@
                             <p>Attendance</p>
                         </a>
                     </li>
+                    <li class="sLayout" id="Date">
+                        <a href="/Date/Index">
+                            <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                            <p>Date</p>
+                        </a>
+                    </li>
                  
                 </ul>
             </div>
@@ -82,7 +90,7 @@
          
             
                 @RenderBody()
-          
+             
 
 
         </div>

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MyAttendance.Models.Components
 {
     public class StudentView
     {
-    
+
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }

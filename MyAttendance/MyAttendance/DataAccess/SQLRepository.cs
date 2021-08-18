@@ -1,11 +1,7 @@
 ﻿using MyAttendance.Models;
 using MyAttendance.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace MyAttendance.DataAccess
 {
@@ -13,24 +9,25 @@ namespace MyAttendance.DataAccess
     {
         internal DataContext Context;
         internal DbSet<T> dbset;
-       public SQLRepository(DataContext context)
+        public SQLRepository(DataContext context)
         {
             this.Context = context;
             this.dbset = context.Set<T>();//dbset from datacontext
         }
 
-        public   IEnumerable<T> Collection()
+        public IEnumerable<T> Collection()
         {
-            return  dbset;
+           
+            return dbset;
         }
-       
 
 
-        public  void Commit()
+
+        public void Commit()
         {
             Context.SaveChanges();
         }
-
+        
         public void Delete(int Id)
         {
 
@@ -43,7 +40,7 @@ namespace MyAttendance.DataAccess
             dbset.Remove(t);
 
 
-            
+
         }
 
         public void Edit(T t)
@@ -62,8 +59,9 @@ namespace MyAttendance.DataAccess
         public void Insert(T t)
         {
             dbset.Add(t);
-            
+
 
         }
+
     }
 }

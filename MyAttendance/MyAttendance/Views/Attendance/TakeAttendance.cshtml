@@ -1,0 +1,67 @@
+﻿@model MyAttendance.Models.Attendance.StudentForm
+   
+
+<h3 style="font-family:Cambria">Class-@ViewBag.ClassName Attendance</h3>
+<h6 style="font-family:Cambria;text-align:right">Date - @DateTime.Today</h6>
+<table class="table table-responsive-sm table-bordered">
+
+    <thead>
+        <tr>
+            <td>Roll No</td>
+            <td>Student Name</td>
+            <td>IsPresent</td>
+        </tr>
+    </thead>
+
+
+
+
+    @using (@Html.BeginForm("TakeAttendance", "Attendance", FormMethod.Post, new { @class = "form-control" }))
+    {
+    <tbody>
+        @for (int i = 0; i < @ViewBag.Count; i++)
+        {
+        <tr>
+
+         
+            @Html.HiddenFor(x => x.students[i].Roll)
+            @Html.HiddenFor(x => x.students[i].StudentName)
+            @Html.HiddenFor(x => x.students[i].Id)
+            @Html.HiddenFor(x=>x.students[i].DateId)
+            @Html.HiddenFor(x=>x.students[i].ClassId)
+
+
+           
+            <td>@Html.DisplayFor(x => x.students[i].Roll)</td>
+            <td>@Html.DisplayFor(x => x.students[i].StudentName)</td>
+            <td>@Html.CheckBoxFor(x => x.students[i].isPresent)</td>
+
+        </tr>
+        }
+        <tr>
+            <td>
+                <input type="submit" value="Submit" class="btn btn-warning" />
+            </td>
+        </tr>
+        </tbody>
+ 
+        
+
+      
+              
+            
+
+
+    }
+    </table>
+<script>
+    $(document).ready(function ()
+    {
+        $('.sLayout').removeClass('active');
+        $('#attendance').addClass('active');
+    });
+</script>
+   
+
+
+

@@ -10,6 +10,6 @@ namespace MyAttendance.Controllers
             return View();
         }
 
-       
+
     }
 }

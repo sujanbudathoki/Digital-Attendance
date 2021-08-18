@@ -1,9 +1,6 @@
-﻿using MyAttendance.Helpers;
-using MyAttendance.Models;
+﻿using MyAttendance.Models;
 using MyAttendance.Models.User;
 using MyAttendance.Repositories;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -25,22 +22,24 @@ namespace MyAttendance.Controllers
         [HttpPost]
         public ActionResult Login(UserViewModel model)
         {
-           
 
-                bool checkUser = _userContext.Collection().Any(x => x.Email == model.Email && x.Password == model.Password);
-                if (checkUser)
-                {
-                    FormsAuthentication.SetAuthCookie(model.Email, false);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ViewBag.Error = "*Invalid credentials. Please try again.";
-                    return View();
+            bool checkUser =
+                 _userContext.Collection()
+                 .Any(x => x.Email == model.Email && x.Password == model.Password);
 
-                }
-            
-           
+            if (checkUser)
+            {
+                FormsAuthentication.SetAuthCookie(model.Email, false);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.Error = "*Invalid credentials. Please try again.";
+                return View();
+
+            }
+
+
         }
 
         public ActionResult Logout()
@@ -77,8 +76,8 @@ namespace MyAttendance.Controllers
             }
         }
 
-       
-      
+
+
 
     }
 }

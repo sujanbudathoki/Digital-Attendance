@@ -1,4 +1,5 @@
 using MyAttendance.DataAccess;
+using MyAttendance.Models.Attendance;
 using MyAttendance.Models.Components;
 using MyAttendance.Models.User;
 using MyAttendance.Repositories;
@@ -50,6 +51,9 @@ namespace MyAttendance
             container.RegisterType<IRepository<Standard>, SQLRepository<Standard>>();
             container.RegisterType<IStudentService, StudentService>();
             container.RegisterType<IRepository<Student>, SQLRepository<Student>>();
+            container.RegisterType<IRepository<Date>, SQLRepository<Date>>();
+            container.RegisterType<IRepository<StudentAttend>, SQLRepository<StudentAttend>>();
+            container.RegisterType<IRepository<AttendanceStatus>, SQLRepository<AttendanceStatus>>();
         }
     }
 }

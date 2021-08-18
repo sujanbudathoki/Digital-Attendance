@@ -1,9 +1,5 @@
 ﻿using MyAttendance.Models.Components;
 using MyAttendance.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MyAttendance.Controllers
@@ -63,9 +59,9 @@ namespace MyAttendance.Controllers
             }
             else
             {
-                 _stdContext.Edit(standard);
-                 _stdContext.Commit();
-                 return RedirectToAction("Index");
+                _stdContext.Edit(standard);
+                _stdContext.Commit();
+                return RedirectToAction("Index");
             }
         }
         public ActionResult Delete(int Id)
@@ -83,7 +79,7 @@ namespace MyAttendance.Controllers
         }
 
 
-        
+
 
     }
 }

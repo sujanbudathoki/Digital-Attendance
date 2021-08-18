@@ -1,4 +1,4 @@
-﻿@model IEnumerable<int>
+﻿@model IEnumerable<MyAttendance.Models.Components.Standard>
 
 @{ ViewBag.Title = "StudentIndex";
     int rowcounter = 0;
@@ -10,13 +10,13 @@
     {
         if ((rowcounter / 6) % 2 == 0)
         {
-            <div class="col-md-2">
-                @Html.ActionLink("Class-" + item.ToString(), "StudentIndex", "Student", new { Id = item }, new { @class = "btn btn-primary" })
+            <div class="col-md-3">
+                @Html.ActionLink("Class-" + item.StandardName, "StudentIndex", "Student", new { Id = item.Id }, new { @class = "btn btn-primary" })
             </div>
         }
         else
-        { <div class="col-md-2">
-                @Html.ActionLink("Class-" + item.ToString(), "StudentIndex", "Student", new { Id = item }, new { @class = "btn btn-warning" })
+        { <div class="col-md-3">
+                @Html.ActionLink("Class-" + item.StandardName, "StudentIndex", "Student", new { Id = item.Id }, new { @class = "btn btn-warning" })
           </div>
          }
            

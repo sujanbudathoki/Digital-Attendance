@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MyAttendance.Repositories
 {
-    
- 
-  public  interface IRepository<T> where T:class
+
+
+    public interface IRepository<T> where T : class
     {
         IEnumerable<T> Collection();
         void Commit();

@@ -1,14 +1,10 @@
 ﻿using MyAttendance.Models.Components;
 using MyAttendance.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyAttendance.Repositories
 {
-   public interface IStudentService
+    public interface IStudentService
     {
 
         List<ClassStudentViewModel> GetClassStudentViewModels();
@@ -17,7 +13,7 @@ namespace MyAttendance.Repositories
         void UpdateStudent(Student student);
         string getClassName(int classId);
         IEnumerable<Standard> GetStandards();
-        
+
 
     }
 }

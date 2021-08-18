@@ -1,10 +1,8 @@
 ﻿using MyAttendance.Models.Components;
 using MyAttendance.Repositories;
 using MyAttendance.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace MyAttendance.Services
 {
@@ -12,7 +10,7 @@ namespace MyAttendance.Services
     {
         IRepository<Student> _studentContext;
         IRepository<Standard> _stdContext;
-        public StudentService(IRepository<Student> _studentContext,IRepository<Standard> _stdContext)
+        public StudentService(IRepository<Student> _studentContext, IRepository<Standard> _stdContext)
         {
             this._studentContext = _studentContext;
             this._stdContext = _stdContext;
@@ -25,12 +23,12 @@ namespace MyAttendance.Services
         public List<ClassStudentViewModel> GetClassStudentViewModels()
         {
             var returnModel = GetStandards()
-            .Select(x => new ClassStudentViewModel 
-            { 
-                classId=x.Id,
-                students=getStudents(x.Id)
+            .Select(x => new ClassStudentViewModel
+            {
+                classId = x.Id,
+                students = getStudents(x.Id)
             }).ToList();
-        
+
             return returnModel;
         }
         public IEnumerable<Standard> GetStandards()
@@ -38,14 +36,14 @@ namespace MyAttendance.Services
             var standards = _stdContext.Collection();
             return standards;
         }
-        
 
-        private IList<Student> getStudents(int classId)
+
+        public IList<Student> getStudents(int classId)
         {
             var studentlist = _studentContext.Collection()
                                              .Where(x => x.ClassId == classId)
                                              .ToList();
-            
+
             return studentlist;
         }
 
@@ -70,7 +68,8 @@ namespace MyAttendance.Services
                                      .StandardName;
             return name;
         }
-        
-        
+
+
+
     }
 }

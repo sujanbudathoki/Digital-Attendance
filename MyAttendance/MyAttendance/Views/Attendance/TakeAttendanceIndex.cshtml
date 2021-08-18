@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MyAttendance.Models.Components.Standard>
+@{ 
+    var a = TempData["ErrorMessage"] == null ? 0 : 1;
+}
+Choose Standard:
+<div class="row">
+@foreach(var item in Model)
+            {
+      <div class="col-md-6">
+          @Html.ActionLink(item.StandardName, "TakeAttendance", "Attendance", new { @classId = item.Id }, new { @class="btn btn-primary" })
+      </div>
+            }
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (@a== 1) {
+                toastr.error(`Attendance can't be taken on holiday`,'Error');
+            }
+
+        });
+    </script>
+    }
+

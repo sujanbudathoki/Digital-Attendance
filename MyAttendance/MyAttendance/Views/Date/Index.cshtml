@@ -1,0 +1,13 @@
+﻿<div class="container">
+    <h6 style="text-align:left;font-family:Cambria;color:#ff6a00">Registration Setting</h6>
+    <br/>
+    @Html.ActionLink("Register-Today", "RegisterToday", "Date", null, new { @class="btn btn-dark"})
+</div>
+<script>
+    $(document).ready(function () 
+    {
+        $('.sLayout').removeClass("active");
+        $('#Date').addClass("active");
+    });
+
+</script>
