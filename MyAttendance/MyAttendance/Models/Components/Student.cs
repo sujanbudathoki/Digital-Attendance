@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyAttendance.Models.Components
 {
@@ -7,8 +8,9 @@ namespace MyAttendance.Models.Components
         public int Id { get; set; }
         public int Roll { get; set; }
         public string StudentName { get; set; }
+
+        
         public int ClassId { get; set; }
-        [ForeignKey("ClassId")]
-        public Standard Standard { get; set; }
+     
     }
 }

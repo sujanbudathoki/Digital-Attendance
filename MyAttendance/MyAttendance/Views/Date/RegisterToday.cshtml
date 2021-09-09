@@ -1,36 +1,54 @@
 ﻿@model MyAttendance.Models.Attendance.Date
-
+<style>
+    [type="radio"]:not(:checked), [type="radio"]:checked {
+        position: relative;
+        opacity: 1;
+    }
+</style>
 
 <h6>@TempData["Error"]</h6>
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
- 
-<div class="form-horizontal">
+
+
     <h4 style="font-family:Candara">Registration Date - [@DateTime.Now.ToShortDateString()]</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <h4>Today is:</h4>
-    <div class="form-group">
 
-        <div class="col-md-10">
-            <label>Holiday</label>
-            @Html.RadioButtonFor(model=>model.isHolidayFlag,1)
-            <label>Working Day</label>
-            @Html.RadioButtonFor(model => model.isHolidayFlag,2)
-            @Html.ValidationMessageFor(model => model.isHolidayFlag, "", new { @class = "text-danger" })
-        </div>
-    </div>
+
+
+    @Html.RadioButtonFor(model => model.isHolidayFlag, 2, new { @id = "choice1" })
+    <label for="choice1">WorkDay</label>
+
+
+
+
+    @Html.RadioButtonFor(model => model.isHolidayFlag, 1, new { @id = "choice2" })
+    <label for="choice2">HoliDay</label>
+   
+
+
+
 
     <div class="form-group">
         <div class="col-md-10">
             <input type="submit" value="Submit" class="btn btn-danger" />
         </div>
     </div>
-</div>
+
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script>
+    $(document).ready(function () {
+        $('.sLayout').removeClass('active');
+        $('#date').addClass('active');
+
+    });
+   
+</script>

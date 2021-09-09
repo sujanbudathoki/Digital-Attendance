@@ -8,10 +8,6 @@ namespace MyAttendance.Services
 {
     public class CallProcedureGeneric<T> where T:class
     {
-        DataContext context;
-        public List<T> returnListAsync()
-        {
-            var result =
-        }
+       
     }
 }

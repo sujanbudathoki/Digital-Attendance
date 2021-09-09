@@ -1,5 +1,7 @@
 ﻿@model MyAttendance.Models.Attendance.StudentForm
-   
+   @{ 
+       Layout = "~/Views/Shared/_AttendanceLayout.cshtml";
+   }
 
 <h3 style="font-family:Cambria">Class-@ViewBag.ClassName Attendance</h3>
 <h6 style="font-family:Cambria;text-align:right">Date - @DateTime.Today</h6>
@@ -34,15 +36,17 @@
            
             <td>@Html.DisplayFor(x => x.students[i].Roll)</td>
             <td>@Html.DisplayFor(x => x.students[i].StudentName)</td>
-            <td>@Html.CheckBoxFor(x => x.students[i].isPresent)</td>
+            <td>@Html.CheckBoxFor(x => x.students[i].isPresent,new { @class="form-control"})</td>
 
         </tr>
         }
-        <tr>
-            <td>
-                <input type="submit" value="Submit" class="btn btn-warning" />
-            </td>
-        </tr>
+    <tr>
+        <td>
+            <input type="submit" value="Submit" class="btn btn-warning" />
+        </td>
+
+        <a href="~/Views/Attendance/TakeAttendance.cshtml">~/Views/Attendance/TakeAttendance.cshtml</a>
+    </tr>
         </tbody>
  
         

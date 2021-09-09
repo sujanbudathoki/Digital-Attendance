@@ -14,6 +14,7 @@
                 @Html.ActionLink("Class-" + item.StandardName, "StudentIndex", "Student", new { Id = item.Id }, new { @class = "btn btn-primary" })
             </div>
         }
+
         else
         { <div class="col-md-3">
                 @Html.ActionLink("Class-" + item.StandardName, "StudentIndex", "Student", new { Id = item.Id }, new { @class = "btn btn-warning" })

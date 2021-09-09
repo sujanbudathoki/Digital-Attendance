@@ -6,4 +6,10 @@
 <br/>
 <h6 style="font-family:Candara;font-style:italic;color:red">Note - *If attendance already submitted , then status can't be changed.</h6>
 @Html.ActionLink("Edit-Registration", "EditRegistration",null,new { @class="btn btn-danger"})
+<script>
+    $(document).ready(function () {
+        $('.sLayout').removeClass('active');
+        $('#date').addClass('active');
+    })
+</script>
 

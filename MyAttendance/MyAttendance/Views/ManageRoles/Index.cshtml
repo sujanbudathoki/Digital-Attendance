@@ -1,0 +1,151 @@
+﻿@model MyAttendance.Models.User.ViewModel.UserTypeList
+<h2 style="text-align:center">
+    Manage Roles
+</h2>
+<br/>
+<div class="row">
+    <div class="col s12">
+    <ul id="tabs-swipe-demo" class="tabs">
+        <li class="tab col s3"><a class="active" href="#test-swipe-1">HOD</a></li>
+        <li class="tab col s3"><a href="#test-swipe-2">Teachers</a></li>
+        <li class="tab col s3"><a href="#test-swipe-3">Students</a></li>
+    </ul>
+        </div>
+    </div>
+    
+    <div id="test-swipe-1" class="col s12">
+        <span>
+            
+    @Html.ActionLink(" ","","",null,new { @class="btn btn-primary fas fa-plus"})
+            <label>ADD-HOD</label>
+            </span>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                   Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                   Role Type
+                </th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model.HOD)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleType)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info fa fa-edit " })
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div id="test-swipe-2" class="col s12">
+        <span>
+
+            @Html.ActionLink(" ", "AddTeacher", "ManageRoles", null, new { @class = "btn btn-primary fas fa-plus" })
+            <label>ADD-TEACHER</label>
+        </span>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Role Type
+                </th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model.Teacher)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleType)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info fa fa-edit " })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div id="test-swipe-3" class="col s12">
+        <span>
+
+            @Html.ActionLink(" ", "", "", null, new { @class = "btn btn-primary fas fa-plus" })
+            <label>ADD-STUDENT</label>
+        </span>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Role Type
+                </th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model.Students)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleType)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info fa fa-edit " })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+<script>
+    $(document).ready(function () {
+     
+            $('.sLayout').removeClass('active');
+            $('#roleManager').addClass('active');
+       
+        $('ul.tabs').tabs();
+
+    });
+
+    $(document).ready(function () {
+        $('ul.tabs').tabs('select_tab', 'tab_id');
+    });
+</script>

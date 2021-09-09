@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MyAttendance.Models.Components.Standard>
+@{ 
+   
+}
+<h6 style="font-family:Calibri">Reports For Standards</h6>
+<br />
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            @Html.ActionLink(item.StandardName, "Index", "Report",new { classId= item.Id }, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.sLayout').removeClass('active');
+        $('#report').addClass('active');
+    });
+</script>
+
+

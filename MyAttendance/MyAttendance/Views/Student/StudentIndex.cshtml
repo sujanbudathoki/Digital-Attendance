@@ -26,11 +26,17 @@
             @Html.DisplayFor(modelItem=>item.Name)
         </th>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink(" ", "Edit", new { id=item.Id },new { @class= "fa fa-edit" }) |
+
+            @Html.ActionLink(" ", "Delete", new { id=item.Id },new { @class= "fas fa-trash-alt" })
         </td>
     </tr>
 }
 
 </table>
+<script>
+    $(document).ready(function () {
+        $('.sLayout').removeClass('active');
+        $('#student').addClass('active');
+    });
+</script>

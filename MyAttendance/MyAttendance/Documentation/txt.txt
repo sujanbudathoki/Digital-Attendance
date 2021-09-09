@@ -1,0 +1,10 @@
+Select p.NAME,c.NAME,count(c.LOCATION_ID)
+from COMPANIES c join LOCATIONS l  on c.LOCATION_ID = l.ID
+join PEOPLE P on p.COMPANY_ID = c.ID
+group by c.LOCATION_ID,p.NAME,c.NAME
+having count(c.LOCATION_ID)=(select max(counter) from 
+(select count(cSub.LOCATION_ID) as counter from COMPANIES cSub
+join LOCATIONS lSub on cSub.LOCATION_ID=lSub.ID
+group by cSub.LOCATION_ID,lSub.Id 
+)
+ as counts)

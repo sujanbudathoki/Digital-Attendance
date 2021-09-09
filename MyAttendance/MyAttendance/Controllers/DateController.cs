@@ -50,6 +50,7 @@ namespace MyAttendance.Controllers
                     date = DateTime.Now.Date,
                     isHolidayFlag = dateModel.isHolidayFlag
                 };
+
                 _dateContext.Insert(model);
                 _dateContext.Commit();
                 TempData.Clear();
@@ -61,6 +62,7 @@ namespace MyAttendance.Controllers
 
         public ActionResult EditRegistrationIndex()
         {
+
             return View();
         }
 
@@ -68,6 +70,7 @@ namespace MyAttendance.Controllers
         {
             var model = _dateContext.Collection().Where(x => x.date == DateTime.Now.Date)
                                                  .FirstOrDefault();
+
             if (model == null)
             {
                 return HttpNotFound();
@@ -78,6 +81,7 @@ namespace MyAttendance.Controllers
             }
         }
 
+        [ValidateInput(false)]
         [HttpPost]
         public ActionResult EditRegistration(Date date)
         {
@@ -87,17 +91,25 @@ namespace MyAttendance.Controllers
             }
             else
             {
+                var datemodel = _dateContext.Collection().Where(x => x.date.Date == DateTime.Now.Date).FirstOrDefault();
                 var model = new Date()
                 {
-                    Id = date.Id,
-                    date = date.date,
+                    Id = datemodel.Id,
+                    date = datemodel.date,
                     isHolidayFlag = date.isHolidayFlag
+                   
                 };
+
+                _dateContext.Detach(model);
                 _dateContext.Edit(model);
                 _dateContext.Commit();
                 return RedirectToAction("Index", "Attendance");
             }
         }
+
+        
+
+      
 
 
        

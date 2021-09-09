@@ -12,5 +12,6 @@ namespace MyAttendance.Repositories
         void Insert(T t);
         void Delete(int Id);
         void Edit(T t);
+        void Detach(T t);
     }
 }

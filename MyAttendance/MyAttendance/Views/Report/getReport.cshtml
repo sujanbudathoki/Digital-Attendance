@@ -1,0 +1,78 @@
+﻿
+@model IEnumerable<MyAttendance.Models.Attendance.ViewModels.AttendanceContent>
+
+<div style="font-family:Ebrima;margin-left:40px;border-bottom:2px solid #ff6a00;width:400px;margin-left:250px;padding-left:80px;">
+    <h3> Standard -  @ViewBag.ClassName </h3>
+    <h3 style="margin-left:30px;">@ViewBag.Date , @DateTime.Now.Year</h3>
+</div>
+<h4 style="font-family:Ebrima;text-align:right;color:#ff6a00">
+    @ViewBag.ReportType
+</h4>
+
+<table class="table table-bordered">
+    <thead class="thead-dark" style="background-color:#0094ff">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RollNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.AttendStatus)
+            </th>
+
+        </tr>
+    </thead>
+
+
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-primary">
+                <td>
+                    @Html.DisplayFor(modelItem => item.RollNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @if (item.AttendStatus == "Absent")
+                    {
+
+                        <i class="fa fa-times" style="color:#ff0000"></i>
+
+                    }
+                    else
+                    {
+
+                        <i class="fa fa-check" style="color:#00ff21"></i>
+
+                    }
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+<div class="text-align:left">
+    @Html.ActionLink("Back-To-Filters ", "Index", "Report", null, new { @class = "btn btn-warning fa fa-arrow-circle-left" })
+</div>
+<div style="text-align:right">
+    <h4>
+        Export to PDF -
+        <button class="btn btn-outline-default">
+            <i class="fa fa-file-pdf-o" style="color:#ff0000" aria-hidden="true"></i>
+        </button>
+    </h4>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.sLayout').removeClass('active');
+        $('#report').addClass('active');
+    });
+</script>

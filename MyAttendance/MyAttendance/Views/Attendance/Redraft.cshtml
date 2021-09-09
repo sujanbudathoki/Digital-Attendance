@@ -1,0 +1,23 @@
+﻿@model IEnumerable<MyAttendance.Models.Components.Standard>
+@{
+    Layout = "~/Views/Shared/_AttendanceLayout.cshtml";
+    var a = TempData["ErrorMessage"] == null ? 0 : TempData["ErrorMessage"];
+}
+
+Choose Standard:
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6">
+            @Html.ActionLink(item.StandardName, "TakeAttendance", "Attendance", new { @classId = item.Id }, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>
+<script>
+    $(document).ready(function () {
+        $('.sLayout').removeClass('active');
+        $('#attendance').addClass('active');
+    })
+</script>
+

@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - DigitalAttendance</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/aCss")
+    <link href="~/Content/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/Content/solid.min.css" rel="stylesheet" />
+    <link href="~/Content/svg-with-js.min.css" rel="stylesheet" />
+    <link href="~/Content/regular.min.css" rel="stylesheet" />
+    <link href="~/Content/v4-shims.min.css" rel="stylesheet" />
+    @Scripts.Render("~/Content/pluginScripts")
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="~/Content/assets/css/paper-dashboard.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/demo/demo.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.min.js"></script>
+    <link href="~/Content/ColoribTable/vendor/animate/animate.css" rel="stylesheet" />
+    <link href="~/Content/ColoribTable/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="~/Content/ColoribTable/css/util.css" rel="stylesheet" />
+    <link href="~/Content/ColoribTable/css/main.css" rel="stylesheet" />
+
+    <link href="~/Content/ColoribTable/vendor/select2/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+   
+    <style>
+        [type="radio"]:not(:checked) + span, [type="radio"]:checked + span {
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            display: inline-block;
+            height: 25px;
+            line-height: 25px;
+            font-size: 1rem;
+            -webkit-transition: .28s ease;
+            transition: .28s ease;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        [type="radio"] + span:before, [type="radio"] + span:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 4px;
+            width: 16px;
+            height: 16px;
+            z-index: 0;
+            -webkit-transition: .28s ease;
+            transition: .28s ease
+        }
+
+        [type="radio"]:not(:checked) + span:before, [type="radio"]:not(:checked) + span:after,
+        [type="radio"]:checked + span:before, [type="radio"]:checked + span:after,
+        [type="radio"].with-gap:checked + span:before, [type="radio"].with-gap:checked + span:after {
+            border-radius: 50%
+        }
+
+        [type="radio"]:not(:checked) + span:before, [type="radio"]:not(:checked) + span:after {
+            border: 2px solid #5a5a5a
+        }
+
+        [type="radio"]:not(:checked) + span:after {
+            -webkit-transform: scale(0);
+            transform: scale(0)
+        }
+
+        [type="radio"]:checked + span:before {
+            border: 2px solid transparent
+        }
+
+        [type="radio"]:checked + span:after, [type="radio"].with-gap:checked + span:before,
+        [type="radio"].with-gap:checked + span:after {
+            border: 2px solid #26a69a
+        }
+
+        [type="radio"]:checked + span:after, [type="radio"].with-gap:checked + span:after {
+            background-color: #26a69a
+        }
+
+        [type="radio"]:checked + span:after {
+            -webkit-transform: scale(1.02);
+            transform: scale(1.02)
+        }
+
+        [type="radio"].with-gap:checked + span:after {
+            -webkit-transform: scale(0.5);
+            transform: scale(0.5)
+        }
+
+        [type="radio"].tabbed:focus + span:before {
+            -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1)
+        }
+
+        [type="radio"].with-gap:disabled:checked + span:before {
+            border: 2px solid rgba(0, 0, 0, 0.42)
+        }
+
+        [type="radio"].with-gap:disabled:checked + span:after {
+            border: none;
+            background-color: rgba(0, 0, 0, 0.42)
+        }
+
+        [type="radio"]:disabled:not(:checked) + span:before, [type="radio"]:disabled:checked + span:before {
+            background-color: transparent;
+            border-color: rgba(0, 0, 0, 0.42)
+        }
+
+        [type="radio"]:disabled + span {
+            color: rgba(0, 0, 0, 0.42)
+        }
+    </style>
+
+
+</head>
+<body>
+
+
+
+
+    <div class="wrapper ">
+        <div class="sidebar" data-color="white" data-active-color="danger">
+            <div class="logo">
+                <a href="#" class="simple-text logo-mini">
+                    <div class="logo-image-small">
+
+                    </div>
+                    <!-- <p>CT</p> -->
+                </a>
+                <a href="#" class="simple-text logo-normal">
+                    Digital Attendance
+                    <!-- <div class="logo-image-big">
+                      <img src="../assets/img/logo-big.png">
+                    </div> -->
+                </a>
+            </div>
+
+            @if (User.IsInRole("HOD"))
+            {
+                <div class="sidebar-wrapper">
+                    <ul class="nav">
+                        <li class="active sLayout" id="home">
+                            <a href="/Home/Index">
+                                <i class="nc-icon nc-bank"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+
+
+
+                        <li class="sLayout" id="standard">
+                            <a href="/Standard/Index">
+                                <i class="nc-book-bookmark"></i>
+                                <p>Classes</p>
+                            </a>
+                        </li>
+
+                        <li class="sLayout" id="student">
+                            <a href="/Student/Index">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                                <p>Student-Management</p>
+                            </a>
+                        </li>
+
+                        <li class="sLayout" id="attendance">
+                            <a href="/Attendance/Index">
+                                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                                <p>Attendance</p>
+                            </a>
+                        </li>
+                        <li class="sLayout" id="Date">
+                            <a href="/Date/Index">
+                                <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                                <p>Date</p>
+                            </a>
+                        </li>
+
+                        <li class="sLayout" id="report">
+                            <a href="/Report/ReportIndex">
+                                <i class="fa fa-file" aria-hidden="true"></i>
+                                <p>Report</p>
+                            </a>
+                        </li>
+
+                        <li class="sLayout" id="roleManager">
+                            <a href="/ManageRoles/Index">
+                                Manage Roles
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+            }
+            else if (User.IsInRole("teacher"))
+            {
+
+                <div class="sidebar-wrapper">
+                    <ul class="nav">
+                        <li class="active sLayout" id="home">
+                            <a href="/Home/Index">
+                                <i class="nc-icon nc-bank"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+
+
+
+
+
+                        <li class="sLayout" id="student">
+                            <a href="/Student/Index">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                                <p>Student-Management</p>
+                            </a>
+                        </li>
+
+                        <li class="sLayout" id="attendance">
+                            <a href="/Attendance/Index">
+                                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                                <p>Attendance</p>
+                            </a>
+                        </li>
+                        <li class="sLayout" id="Date">
+                            <a href="/Date/Index">
+                                <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                                <p>Date</p>
+                            </a>
+                        </li>
+
+                        <li class="sLayout" id="report">
+                            <a href="/Report/ReportIndex">
+                                <i class="fa fa-file" aria-hidden="true"></i>
+                                <p>Report</p>
+                            </a>
+                        </li>
+
+
+
+                    </ul>
+
+                </div>
+            }
+
+
+
+        </div>
+        <div class="main-panel">
+            <a href="/User/LogOut" style="margin-left:1000px" class="btn btn-outline-danger">LogOut</a>
+
+
+            @RenderBody()
+
+
+
+        </div>
+    </div>
+    <script src="~/Content/assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Chartist JS -->
+    <script src="~/Content/assets/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="~/Content/assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+
+    <script src="~/Content/assets/js/paper-dashboard.js"></script>
+    <script src="~/Content/ColoribTable/js/main.js"></script>
+    <script src="~/Content/ColoribTable/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/Content/ColoribTable/vendor/select2/select2.min.js"></script>
+
+    <script>
+
+        $('.js-pscroll').each(function () {
+            var ps = new PerfectScrollbar(this);
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+
+
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/materialize/materialize.min.js"></script>
+
+
+</body>
+
+</html>
+
+
+

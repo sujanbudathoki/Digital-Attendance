@@ -1,0 +1,5 @@
+Error Reference
+1- Date is null , No Attendance
+2- No Attendance
+3 - Date is null , No Attendance
+4 - No Attendance

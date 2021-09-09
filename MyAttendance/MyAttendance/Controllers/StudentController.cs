@@ -9,9 +9,11 @@ namespace MyAttendance.Controllers
     public class StudentController : Controller
     {
         IStudentService _stdService;
-        public StudentController(IStudentService _stdService)
+        IRepository<Student> _studentService;
+        public StudentController(IStudentService _stdService,IRepository<Student> _studentService)
         {
             this._stdService = _stdService;
+            this._studentService = _studentService;
         }
 
         public ActionResult Index()
@@ -92,5 +94,46 @@ namespace MyAttendance.Controllers
             }
         }
 
+        public ActionResult Delete(int Id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            else
+            {
+                var student = _studentService.Collection().Where(x => x.Id == Id).FirstOrDefault();
+                return View(student);
+            }
+        }
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult ConfirmDelete(Student model)
+        {
+            _studentService.Delete(model.Id);
+            _studentService.Commit();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int Id)
+        {
+            var model = _studentService.Collection().Where(x => x.Id == Id).FirstOrDefault();
+            return View(model);
+
+        }
+        [HttpPost]
+        public ActionResult Edit(Student student)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(student);
+            }
+            else
+            {
+                _studentService.Edit(student);
+                _studentService.Commit();
+                return RedirectToAction("Index");
+            }
+        }
     }
 }

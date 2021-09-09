@@ -46,41 +46,51 @@ namespace MyAttendance.Controllers
             {
                 if (dateModel.isHolidayFlag==1)
                 {
+                    
                     TempData["ErrorMessage"] = 1;
                     TempData.Keep();
-                    return View("TakeAttendanceIndex");
+                    return RedirectToAction("TakeAttendanceIndex");
                 }
                 else 
                 {
-                    TempData.Clear();
-                    var ClassData =
-                        _stdContext.Collection()
-                                   .Where(x => x.Id == classId)
-                                   .FirstOrDefault();
+                    bool alreadyAttend = _attendContext.Collection().Any(x => x.DateId == dateModel.Id&&x.ClassId==classId);
+                    if (alreadyAttend)
+                    {
+                      
+                        TempData["ErrorMessage"] = 2;
+                        TempData.Keep();
+                        return RedirectToAction("TakeAttendanceIndex");
+                    }
+                    else
+                    {
+                        TempData.Clear();
+                        var ClassData =
+                            _stdContext.Collection()
+                                       .Where(x => x.Id == classId)
+                                       .FirstOrDefault();
 
-                    var attendStandard = studentService.GetClassStudentViewModels()
-                                                       .Where(x => x.classId == classId)
-                                                       .Select(y => y.students)
-                                                       .FirstOrDefault()
-                                                       .Select(z => new StudentAttendView()
-                                                       {
-                                                           Id = z.Id,
-                                                           StudentName = z.StudentName,
-                                                           ClassId = z.ClassId,
-                                                           ClassName = ClassData.StandardName,
-                                                           Roll = z.Roll,
-                                                           DateId=dateModel.Id
-                                                           
+                        var attendStandard = studentService.GetClassStudentViewModels()
+                                                           .Where(x => x.classId == classId)
+                                                           .Select(y => y.students)
+                                                           .FirstOrDefault()
+                                                           .Select(z => new StudentAttendView()
+                                                           {
+                                                               Id = z.Id,
+                                                               StudentName = z.StudentName,
+                                                               ClassId = z.ClassId,
+                                                               ClassName = ClassData.StandardName,
+                                                               Roll = z.Roll,
+                                                               DateId = dateModel.Id
 
-                                                       }).ToList();
 
-                   
-                    ViewBag.ClassName = ClassData.StandardName;
-                    ViewBag.Count = attendStandard.Count;
-                    
+                                                           }).ToList();
 
-                    return View(new StudentForm()
-                    { students = attendStandard }); 
+
+                        ViewBag.ClassName = ClassData.StandardName;
+                        ViewBag.Count = attendStandard.Count;
+                        return View(new StudentForm()
+                        { students = attendStandard });
+                    }
                 }
             }
             else
@@ -115,6 +125,7 @@ namespace MyAttendance.Controllers
                     _studentAttendContext.Insert(attendModel);
                 }
                  _studentAttendContext.Commit();
+
                  var attendStatus = new AttendanceStatus()
                   {
                     ClassId = model.students.FirstOrDefault().ClassId,
@@ -123,12 +134,22 @@ namespace MyAttendance.Controllers
                   };
                 
                 _attendContext.Insert(attendStatus);
-              
                 _attendContext.Commit();
                  return View();
             }
 
         }
-
+        public ActionResult Redraft()
+        {
+            var standardList =
+               _stdContext.Collection();
+            return View(standardList);
+            
+        }
+        public ActionResult EditAttendance(int classId)
+        {
+            var date = _dateContext.Collection().Where(x => x.date.Date == DateTime.Now.Date).FirstOrDefault();
+            return View(date);
+        }
     }
 }

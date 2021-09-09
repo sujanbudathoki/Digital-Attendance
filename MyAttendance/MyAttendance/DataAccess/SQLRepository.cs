@@ -9,6 +9,11 @@ namespace MyAttendance.DataAccess
     {
         internal DataContext Context;
         internal DbSet<T> dbset;
+
+        public SQLRepository():this(new DataContext())
+        {
+
+        }
         public SQLRepository(DataContext context)
         {
             this.Context = context;
@@ -26,6 +31,7 @@ namespace MyAttendance.DataAccess
         public void Commit()
         {
             Context.SaveChanges();
+           
         }
         
         public void Delete(int Id)
@@ -45,9 +51,16 @@ namespace MyAttendance.DataAccess
 
         public void Edit(T t)
         {
-            dbset.Attach(t);
-            Context.Entry(t).State = EntityState.Modified;
+           
 
+            Context.Entry(t).State = EntityState.Modified;
+            dbset.Attach(t);
+
+        }
+        public void Detach(T t)
+        {
+            Context.Entry(t).State = EntityState.Detached;
+            Context.SaveChanges();
         }
 
         public T Find(int Id)

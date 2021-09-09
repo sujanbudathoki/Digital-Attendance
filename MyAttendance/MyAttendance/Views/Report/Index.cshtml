@@ -1,0 +1,112 @@
+﻿@model MyAttendance.Models.Components.Standard
+@{
+    int a = TempData["ErrorReference"] == null ? 0 : (int)TempData["ErrorReference"];
+   
+}
+<h2 style="font-family:Corbel;">
+    <i class="fa fa-user-circle-o" aria-hidden="true" style="color:#0026ff"></i>
+    Attendance Report
+</h2>
+<br/>
+<h3 style="font-family:Corbel;border-bottom:2px solid #ff6a00">
+   Quick Filter:
+</h3>
+<br/>
+<div class="row">
+    <div class="col-md-2">
+        @Html.ActionLink("Today", "getReport", "Report", new { flag = 1, classId = Model.Id }, new { @class = "btn btn-danger" })
+
+    </div>
+    <div class="col-md-2">
+        @Html.ActionLink("Yesterday", "getReport", "Report", new { flag = 2, classId = Model.Id }, new { @class = "btn btn-danger" })
+    </div>
+    <div class="col-md-2">
+        @Html.ActionLink("This Month", "getReport", "Report", new { flag = 4, classId = Model.Id }, new { @class = "btn btn-danger" })
+    </div>
+    <div class="col-md-2">
+        @Html.ActionLink("Last 7 Days", "getReport", "Report", new { flag = 3, classId = Model.Id }, new { @class = "btn btn-danger" })
+
+    </div>
+
+</div>
+<br />
+<h4 style="font-family:Candara;border-bottom:2px solid #ff6a00">Filter By Month:</h4>
+<div class="row">
+    <div class="col-md-3">
+        <label>Choose Month:</label>
+       
+        <a href="@Url.Action("getReport",new {@flag=4,@classId=Model.Id,@monthNo=8 })" class="btn btn-warning">Previous Month</a>
+
+     
+    </div>
+</div>
+<br/>
+<h4 style="font-family:Corbel;border-bottom:2px solid #ff6a00">Filter By Specific Date:</h4>
+<div class="row">
+    <div class="col-md-3">
+        <input type="date" class="form-control" />
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.sLayout').removeClass('active');
+            $('#report').addClass('active');
+            var b =@a;
+            if (b == 1 || b == 3) {
+                alert(`!!Date was not registered and attendance not taken.`, 'Error');
+            }
+            else if (b == 2 || b == 4) {
+                alert(`No Attendance Taken on this day.[Holiday,No Attendance]`, `warning`);
+            }
+            else {
+
+            }
+
+        });
+
+        $('#getReportBtn').on('click', function () {
+            
+            console.log('hello');
+            $.ajax({
+                url: "getReport",
+                type: "GET",
+                data: { flag: 4, classId:@Model.Id, monthNo=value },
+                success: function (result) {
+
+                },
+                error: function (result) {
+
+                }
+
+
+
+
+
+            });
+        });
+        function getReport(flag, classId) {
+
+            var value = $('#select').find('option : selected').val();
+            alert('hello');
+            $.ajax({
+                url: "getReport",
+                type: "GET",
+                data: { flag: flag, classId: classId, monthNo=value },
+                success: function (result) {
+
+                },
+                error: function (result) {
+
+                }
+
+
+
+
+
+            });
+
+        }
+
+    </script>
+}

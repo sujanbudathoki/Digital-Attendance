@@ -48,6 +48,7 @@ namespace MyAttendance
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<UserModel>, SQLRepository<UserModel>>();
+            container.RegisterType<IRepository<UserType>, SQLRepository<UserType>>();
             container.RegisterType<IRepository<Standard>, SQLRepository<Standard>>();
             container.RegisterType<IStudentService, StudentService>();
             container.RegisterType<IRepository<Student>, SQLRepository<Student>>();

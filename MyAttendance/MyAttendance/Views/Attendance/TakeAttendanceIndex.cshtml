@@ -1,24 +1,41 @@
 ﻿@model IEnumerable<MyAttendance.Models.Components.Standard>
-@{ 
-    var a = TempData["ErrorMessage"] == null ? 0 : 1;
+@{
+    Layout = "~/Views/Shared/_AttendanceLayout.cshtml";
+    var a = TempData["ErrorMessage"] == null ? 0 : TempData["ErrorMessage"];
 }
+
 Choose Standard:
 <div class="row">
-@foreach(var item in Model)
-            {
-      <div class="col-md-6">
-          @Html.ActionLink(item.StandardName, "TakeAttendance", "Attendance", new { @classId = item.Id }, new { @class="btn btn-primary" })
-      </div>
-            }
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6">
+            @Html.ActionLink(item.StandardName, "TakeAttendance", "Attendance", new { @classId = item.Id }, new { @class = "btn btn-primary" })
+        </div>
+    }
 </div>
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
+            $('.sLayout').removeClass('active');
+            $('#attendance').addClass('active');
+        });
+
+        $(document).ready(function () {
+
+
             if (@a== 1) {
-                toastr.error(`Attendance can't be taken on holiday`,'Error');
+                alert(`Attendance can't be taken on holiday`, 'Error');
+            }
+            else if (@a== 2) {
+                alert(`Attendance is already taken ,please look for reports`, `warning`);
+            }
+            else {
+
             }
 
         });
+
     </script>
-    }
+}
 

@@ -1,0 +1,94 @@
+﻿@model MyAttendance.Models.Attendance.AttendanceMultiDayViewModel
+
+<div style="font-family:Ebrima;margin-left:40px;border-bottom:2px solid #ff6a00;width:400px;margin-left:250px;padding-left:80px;">
+   <h3> Standard -  @ViewBag.ClassName </h3>
+    <h3 style="margin-left:30px;">@ViewBag.Date , @DateTime.Now.Year</h3>
+</div>
+<h4 style="font-family:Ebrima;text-align:right;color:#ff6a00">
+    @ViewBag.ReportType
+</h4>
+<table class="table table-bordered table-active table-dark">
+    <thead class="thead-dark" style="background-color:#0094ff">
+    <tr>
+        <th scope="col">
+            Roll No.
+        </th>
+        <th scope="col">
+            Student - Name
+        </th>
+        <th colspan="@Model.DateNumber.Count" scope="col">
+            Date
+        </th>
+        </tr>
+    <tr>
+        <th colspan="2"></th>
+        
+        @foreach (var item in Model.DateNumber)
+        {
+            <th scope="col">
+                @Html.DisplayFor(modelItem => item.Date)
+            </th>
+        }
+       
+    </tr>
+        </thead>
+
+    @foreach (var studentItem in Model.Studentlist)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => studentItem.RollNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => studentItem.Name)
+            </td>
+
+          
+                @foreach (var status in studentItem.Status)
+                {
+                    if (status == "Absent")
+                    {
+                        <td>
+                        <i class="fa fa-times" style="color:#ff0000"></i>
+                            </td>
+
+                    }
+                    else if(status=="Present")
+                    {
+                        <td>
+                        <i class="fa fa-check" style="color:#00ff21"></i>
+                            </td>
+
+                    }
+                    else
+                    {
+                        <td>N/A</td>
+                    }
+                }
+            
+
+        </tr>
+    }
+
+</table>
+<div class="text-align:left">
+    @Html.ActionLink("Back-To-Filters ","Index","Report",null,new { @class= "btn btn-warning fa fa-arrow-circle-left" })
+</div>
+<div style="text-align:right">
+    <h4>Export to PDF - 
+    <button class="btn btn-outline-default">
+    <i class="fa fa-file-pdf-o" style="color:#ff0000" aria-hidden="true"></i>
+        </button>
+    </h4>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.sLayout').removeClass('active');
+        $('#report').addClass('active');
+    });
+</script>
+
+
+
