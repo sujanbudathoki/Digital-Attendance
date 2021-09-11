@@ -1,6 +1,6 @@
 # Digital-Attendance
 Digital-Attendance is an Attendance management systmen based on ASP.Net MVC and it is my project for BSC.CSIT 7th semester.
-Licensed under the [MIT License](LICENSE)
+Licensed under the [MIT License](LICENSE.md)
 
 ![Project Image](https://user-images.githubusercontent.com/77040001/132940177-263e4158-c881-4e08-82c9-a702d2f81630.png)
 
