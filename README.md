@@ -53,7 +53,7 @@ Digital Attendance is a web application based on ASP.NET MVC which provides atte
 
 
 #### Screenshots
--
+![sad](https://user-images.githubusercontent.com/77040001/132940885-ab45275f-0c26-4b16-9e0e-cfe11c1827e3.jpg)
 
 
 
