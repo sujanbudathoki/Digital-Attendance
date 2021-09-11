@@ -28,12 +28,15 @@ Digital Attendance is a web application based on ASP.NET MVC which provides atte
 - MS SQL SERVER
 - VISUAL STUDIO 2019
   
+  
   **FrontEnd Libraries**
 - Materialize CSS
 - Toastr Js for alert
 - creative tim bootstrap admin template
+
+
  
- **Others**
+  **Others**
 - Entity Framework as ORM
 - Unity as IOC container
 
