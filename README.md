@@ -48,8 +48,8 @@ Digital Attendance is a web application based on ASP.NET MVC which provides atte
 #### Installation
 
  Copy these codes on pacakage manager console
--Step 1 : Add-Migrations initial
--Step 2 : update-database
+- Step 1 : Add-Migrations initial
+- Step 2 : update-database
 
 
 #### Screenshots
