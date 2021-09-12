@@ -32,7 +32,7 @@ Digital Attendance is a web application based on ASP.NET MVC which provides atte
   **FrontEnd Libraries**
 - Materialize CSS
 - Toastr Js for alert
-- creative tim bootstrap admin template
+
 
 
  
